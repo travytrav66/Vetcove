@@ -3,19 +3,26 @@
 .toast {
   position: fixed;
   z-index: 150;
-  left: 50%;
+  // Span the viewport and center with auto margins: positioning from left: 50% would cap
+  // the width at half the screen and wrap the text early on phones
+  left: 1rem;
+  right: 1rem;
   bottom: calc(1.25rem + env(safe-area-inset-bottom));
+  width: max-content;
   max-width: calc(100% - 2rem);
-  padding: 0.7rem 1.1rem;
-  border-radius: 999px;
+  margin-inline: auto;
+  padding: 0.75rem 1.25rem;
+  border-radius: 1.5rem;
+  line-height: 1.4;
   background: var(--ink);
   color: var(--white);
   font-size: var(--fs-sm);
   font-weight: 500;
   text-align: center;
+  text-wrap: balance; // even line lengths when it wraps on small screens
   box-shadow: 0 12px 30px -10px rgba(22, 33, 62, 0.6);
   opacity: 0;
-  transform: translate(-50%, 12px);
+  transform: translateY(12px);
   pointer-events: none;
   transition:
     opacity 0.25s ease,
@@ -24,5 +31,5 @@
 
 .toast.is-visible {
   opacity: 1;
-  transform: translate(-50%, 0);
+  transform: none;
 }
