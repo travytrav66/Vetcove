@@ -31,6 +31,14 @@
     visibility 0s;
 }
 
+/* Decorative layer: clips the glow and watermark so they can't make the menu scroll sideways */
+.mobile-menu__art {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
 /* Oversized logo mark as a quiet watermark */
 .mobile-menu__mark {
   position: absolute;
