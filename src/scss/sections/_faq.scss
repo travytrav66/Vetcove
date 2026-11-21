@@ -1,0 +1,93 @@
+@use '../abstracts/mixins' as *;
+
+// FAQ accordion.
+
+.faq__grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.faq__aside p {
+  margin-top: 1rem;
+}
+
+.faq__list {
+  border-top: 1px solid var(--line);
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq__item summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 0;
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+
+.faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq__icon {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--mist);
+  display: grid;
+  place-items: center;
+  color: var(--violet);
+  transition:
+    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.2s ease;
+}
+
+.faq__icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.faq__item[open] .faq__icon {
+  transform: rotate(45deg);
+  background: #efebff;
+}
+
+.faq__item.is-closing .faq__icon {
+  transform: none;
+  background: var(--mist);
+}
+
+.faq__item summary:hover .faq__icon {
+  background: #efebff;
+}
+
+.faq__answer {
+  padding: 0 0 1.5rem;
+  max-width: 62ch;
+}
+
+.faq__answer p + p {
+  margin-top: 0.75rem;
+}
+
+@include mq(lg) {
+  .faq__grid {
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+    gap: 5rem;
+  }
+  .faq__aside {
+    position: sticky;
+    top: 96px;
+    align-self: start;
+  }
+}

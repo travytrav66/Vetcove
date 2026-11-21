@@ -1,0 +1,123 @@
+@use '../abstracts/mixins' as *;
+
+// Pill buttons: hover lift, light sweep and label roll.
+
+/* Buttons */
+.btn {
+  --sheen: rgba(255, 255, 255, 0.4);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0.75rem 1.375rem;
+  border-radius: 999px;
+  border: 0;
+  font: 600 var(--fs-sm)/1 var(--font);
+  letter-spacing: 0.005em;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.35s ease,
+    background-color 0.25s ease;
+}
+
+/* Light sweep */
+.btn::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 30%, var(--sheen) 48%, transparent 66%);
+  transform: translateX(-110%);
+}
+
+/* Label roll: the script wraps the text so a copy can slide up from below */
+.btn__roll {
+  display: inline-block;
+  overflow: hidden;
+  padding: 0.12em 0;
+  margin: -0.12em 0;
+}
+
+.btn__roll > span {
+  display: block;
+  position: relative;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn__roll > span::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 0.12em);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.97);
+  transition-duration: 0.1s;
+}
+
+.btn--primary {
+  --sheen: rgba(85, 51, 255, 0.14);
+  background: var(--white);
+  color: var(--violet);
+  box-shadow: 0 6px 18px -6px rgba(22, 10, 120, 0.5);
+}
+
+.btn--ghost {
+  --sheen: rgba(255, 255, 255, 0.28);
+  background: rgba(24, 12, 110, 0.4);
+  color: var(--white);
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.6);
+}
+
+.btn--brand {
+  background: var(--violet);
+  color: var(--white);
+  box-shadow: 0 8px 20px -8px rgba(85, 51, 255, 0.7);
+}
+
+.btn--quiet {
+  --sheen: rgba(85, 51, 255, 0.1);
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1.5px var(--line);
+}
+
+@include hover {
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  .btn:hover::before {
+    transform: translateX(110%);
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn:hover .btn__roll > span {
+    transform: translateY(calc(-100% - 0.12em));
+  }
+  .btn--primary:hover {
+    box-shadow: 0 14px 28px -10px rgba(22, 10, 120, 0.65);
+  }
+  .btn--ghost:hover {
+    background: rgba(24, 12, 110, 0.52);
+    box-shadow:
+      inset 0 0 0 1.5px rgba(255, 255, 255, 0.9),
+      0 12px 24px -12px rgba(10, 5, 60, 0.6);
+  }
+  .btn--brand:hover {
+    background: #4627f0;
+    box-shadow: 0 14px 28px -10px rgba(85, 51, 255, 0.8);
+  }
+  .btn--quiet:hover {
+    box-shadow:
+      inset 0 0 0 1.5px #c9d3e0,
+      0 10px 20px -12px rgba(22, 33, 62, 0.3);
+  }
+}

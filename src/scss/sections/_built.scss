@@ -1,0 +1,107 @@
+@use '../abstracts/mixins' as *;
+
+// Built for purchasers: roles and feature list.
+
+.built {
+  background: var(--mist);
+}
+
+.built__grid {
+  display: grid;
+  gap: 3rem;
+}
+
+.built__roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+  list-style: none;
+  padding: 0;
+}
+
+.built__roles li {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--white);
+  border-radius: 999px;
+  padding: 0.4rem 0.8rem;
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.features {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.feature {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1.1rem;
+  padding: 1.5rem 0;
+}
+
+.feature::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: #dce3ec;
+  transform-origin: left;
+}
+
+.feature:last-child {
+  border-bottom: 1px solid #dce3ec;
+}
+
+.feature__icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  color: var(--violet);
+  background: linear-gradient(150deg, #ffffff 0%, #f1eeff 55%, #e5f5ff 100%);
+  box-shadow:
+    0 1px 2px rgba(22, 33, 62, 0.06),
+    inset 0 0 0 1px rgba(85, 51, 255, 0.12),
+    0 8px 18px -10px rgba(85, 51, 255, 0.45);
+}
+
+.feature__icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.feature__icon .t {
+  fill: rgba(85, 51, 255, 0.16);
+  stroke: none;
+}
+
+.feature h3 {
+  font-weight: 700;
+  color: var(--ink);
+  font-size: var(--fs-lg);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+.feature p {
+  margin: 0.35rem 0 0;
+  max-width: 46ch;
+}
+
+@include mq(lg) {
+  .built__grid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 5rem;
+    align-items: start;
+  }
+}

@@ -1,0 +1,28 @@
+@use '../abstracts/mixins' as *;
+
+// Underlined text links that draw in on hover.
+
+/* Underlined links: line draws in from the left, leaves to the right */
+.text-link,
+.footer__cols a,
+.footer address a {
+  text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) right 100%/0 1.5px no-repeat;
+  transition:
+    background-size 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.2s ease;
+}
+
+.text-link {
+  color: var(--violet);
+  font-weight: 600;
+}
+
+@include hover {
+  .text-link:hover,
+  .footer__cols a:hover,
+  .footer address a:hover {
+    background-size: 100% 1.5px;
+    background-position: left 100%;
+  }
+}

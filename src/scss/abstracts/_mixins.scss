@@ -1,0 +1,23 @@
+@use 'sass:map';
+
+// Mobile-first breakpoints: styles build up from small screens with min-width queries only.
+$breakpoints: (
+  sm: 480px,
+  md: 640px,
+  lg: 900px,
+  // two-column layouts
+  xl: 1100px, // desktop navigation
+);
+
+@mixin mq($bp) {
+  @media (min-width: map.get($breakpoints, $bp)) {
+    @content;
+  }
+}
+
+// Hover effects only on devices with a real pointer, so taps don't leave sticky states.
+@mixin hover {
+  @media (hover: hover) {
+    @content;
+  }
+}

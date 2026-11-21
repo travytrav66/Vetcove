@@ -1,0 +1,57 @@
+@use '../abstracts/mixins' as *;
+
+// Why it is free.
+
+.free {
+  padding-block: 0;
+}
+
+.free__panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-l);
+  padding: 2.5rem 1.5rem;
+  background: linear-gradient(135deg, #f1edff 0%, #e7f6ff 60%, #f0fbe2 100%);
+  display: grid;
+  gap: 2rem;
+}
+
+.free__panel h2 {
+  font-size: var(--fs-2xl);
+  letter-spacing: -0.03em;
+  max-width: 16ch;
+}
+
+.free__body p + p {
+  margin-top: 1rem;
+}
+
+.free__body {
+  max-width: 46ch;
+}
+
+.free__body .text-link {
+  display: inline-block;
+  margin-top: 1.25rem;
+}
+
+/* Why-free panel: gradient sweeps across as it scales up */
+.free__panel {
+  background-size: 220% 220%;
+  background-position: 0 0;
+}
+
+@include mq(md) {
+  .free__panel {
+    padding: 3.5rem;
+  }
+}
+
+@include mq(lg) {
+  .free__panel {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    padding: 4.5rem;
+  }
+}

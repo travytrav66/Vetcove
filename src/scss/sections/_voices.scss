@@ -1,0 +1,154 @@
+@use '../abstracts/mixins' as *;
+
+// Testimonials.
+
+.voices__intro {
+  display: grid;
+  gap: 2.5rem;
+  align-items: end;
+}
+
+.voices__count {
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  max-width: 18ch;
+}
+
+.voices__count .num {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.featured-quote {
+  margin: 3rem 0 0;
+  padding: 2rem 1.5rem;
+  border-radius: var(--radius-l);
+  background: var(--ink);
+  color: #d5dce8;
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-quote::after {
+  content: '';
+  position: absolute;
+  right: -30%;
+  top: -60%;
+  width: 80%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(85, 51, 255, 0.55), transparent);
+  pointer-events: none;
+}
+
+.featured-quote__mark {
+  position: absolute;
+  z-index: 0;
+  right: -18%;
+  bottom: -12%;
+  width: 72%;
+  height: auto;
+  color: var(--white);
+  opacity: 0.06;
+  pointer-events: none;
+  transform: rotate(-10deg);
+}
+
+.featured-quote blockquote {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: clamp(1.25rem, 1rem + 1.2vw, 1.875rem);
+  line-height: 1.4;
+  color: var(--white);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  max-width: 40ch;
+}
+
+.featured-quote figcaption {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.5rem;
+  font-size: var(--fs-sm);
+}
+
+.featured-quote figcaption strong {
+  display: block;
+  color: var(--white);
+  font-weight: 600;
+}
+
+.quotes {
+  columns: 1;
+  column-gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.quote {
+  break-inside: avoid;
+  margin: 0 0 1.25rem;
+  padding: 1.5rem;
+  border-radius: var(--radius-m);
+  background: var(--white);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.quote blockquote {
+  margin: 0;
+  color: var(--ink);
+  font-size: var(--fs-base);
+  line-height: 1.55;
+}
+
+.quote figcaption {
+  margin-top: 1rem;
+  font-size: var(--fs-xs);
+  line-height: 1.45;
+  color: var(--slate-soft);
+}
+
+.quote figcaption strong {
+  display: block;
+  font-size: var(--fs-sm);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.voices__more {
+  margin-top: 1rem;
+}
+
+@keyframes drift {
+  to {
+    transform: translate(-18%, 22%) scale(1.15);
+  }
+}
+
+@include mq(md) {
+  .quotes {
+    columns: 2;
+  }
+  .featured-quote {
+    padding: 3rem;
+  }
+  .featured-quote__mark {
+    right: -8%;
+    bottom: -34%;
+    width: clamp(240px, 40%, 420px);
+  }
+}
+
+@include mq(lg) {
+  .voices__intro {
+    grid-template-columns: 1fr auto;
+  }
+  .quotes {
+    columns: 3;
+  }
+}

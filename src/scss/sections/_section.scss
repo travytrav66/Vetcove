@@ -1,0 +1,20 @@
+// Shared section spacing and heading block.
+
+.section {
+  padding-block: var(--section);
+}
+
+.section__head {
+  max-width: 40rem;
+}
+
+.section__head h2 {
+  font-size: var(--fs-2xl);
+  letter-spacing: -0.03em;
+}
+
+.section__head p {
+  margin-top: 1rem;
+  font-size: var(--fs-lg);
+  line-height: 1.5;
+}

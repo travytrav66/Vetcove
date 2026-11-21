@@ -1,0 +1,41 @@
+@use '../abstracts/mixins' as *;
+
+// Closing call to action.
+
+.cta {
+  color: var(--white);
+  text-align: center;
+  background:
+    radial-gradient(
+      ellipse var(--cta-scrim, 95% 75%) at 50% 55%,
+      rgba(28, 14, 105, 0.62),
+      rgba(28, 14, 105, 0) 100%
+    ),
+    var(--brand-gradient);
+  clip-path: polygon(0 4rem, 100% 0, 100% 100%, 0 100%);
+  padding: calc(var(--section) + 3rem) 0 var(--section);
+}
+
+.cta h2 {
+  color: var(--white);
+  font-size: var(--fs-3xl);
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+}
+
+.cta p {
+  margin: 1.25rem auto 0;
+  font-size: var(--fs-lg);
+  color: var(--white);
+  max-width: 34ch;
+}
+
+.cta .hero__ctas {
+  justify-content: center;
+}
+
+@include mq(lg) {
+  .cta {
+    --cta-scrim: 60% 72%;
+  }
+}
