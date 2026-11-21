@@ -1,0 +1,20 @@
+{
+  "name": "vetcove-homepage-concept",
+  "version": "1.0.0",
+  "description": "An unofficial homepage redesign concept for Vetcove by Travis J. Carr.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/inline-critical.mjs",
+    "preview": "vite preview"
+  },
+  "author": "Travis J. Carr",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@fontsource-variable/figtree": "^5.3.0",
+    "beasties": "^0.5.5",
+    "sass": "^1.108.2",
+    "vite": "^8.3.8"
+  },
+  "private": true,
+  "type": "module"
+}
