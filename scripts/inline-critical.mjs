@@ -19,6 +19,8 @@ const beasties = new Beasties({
   allowRules: [/\.anim\b/, /\.intro\b/, /\.loader/, /\.is-split/, /\[data-split\]/, /\.w\b/],
 });
 html = await beasties.process(html);
+// Beasties leaves a marker attribute on <html>; it has no effect, so drop it
+html = html.replace(/\sdata-beasties-container(="[^"]*")?/g, '');
 
 html = await minify(html, {
   collapseWhitespace: true,
