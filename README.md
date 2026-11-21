@@ -58,6 +58,18 @@ npm run preview   # serve dist/
 npm run format    # Prettier
 ```
 
+### Deploying to GitHub Pages
+
+A workflow in `.github/workflows/deploy.yml` builds and publishes the site on every push to `main`.
+
+1. Push the repo to GitHub.
+2. In the repo, go to **Settings → Pages** and set **Source** to **GitHub Actions**.
+3. Push to `main` (or run the workflow from the **Actions** tab). The site appears at `https://<username>.github.io/<repo>/`.
+
+On a `github.io/<repo>/` address, crawlers only read `robots.txt` at the domain root, so the page's `noindex` tag is what keeps it out of search.
+
+The workflow fills in `SITE_URL` from the Pages address automatically. If you use a custom domain, set a repository variable named `SITE_URL` (**Settings → Secrets and variables → Actions → Variables**) to the full address, ending in `/`.
+
 ### Link previews
 
 Social cards need absolute URLs. Set the page's final address when building:
