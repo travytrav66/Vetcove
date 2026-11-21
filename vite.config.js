@@ -19,6 +19,28 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [
       {
+        // Preload the font and the hero product image so the first screen renders without a swap
+        name: 'preload-critical-assets',
+        enforce: 'post',
+        transformIndexHtml: {
+          order: 'post',
+          handler(html, ctx) {
+            if (!ctx.bundle) return html;
+            const files = Object.keys(ctx.bundle);
+            const font = files.find((f) => /figtree.*\.woff2$/.test(f));
+            const image = files.find((f) => /products.*\.webp$/.test(f));
+            const tags = [];
+            if (font)
+              tags.push(
+                `<link rel="preload" href="./${font}" as="font" type="font/woff2" crossorigin>`,
+              );
+            if (image)
+              tags.push(`<link rel="preload" href="./${image}" as="image" type="image/webp">`);
+            return html.replace('</title>', `</title>\n    ${tags.join('\n    ')}`);
+          },
+        },
+      },
+      {
         name: 'site-url',
         transformIndexHtml(html) {
           if (!env.SITE_URL) {

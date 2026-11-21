@@ -1,5 +1,6 @@
 // Order matters: later partials build on earlier ones.
 @use 'abstracts/tokens';
+@use 'base/fonts';
 @use 'base/base';
 @use 'components/buttons';
 @use 'components/links';
